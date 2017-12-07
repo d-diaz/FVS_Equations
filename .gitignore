@@ -1,5 +1,8 @@
 # FVS Modeling Files
-./keyfiles_to_run/*
+keyfiles_to_run/*
+
+# jupyter notebook checkpoints
+*checkpoint.ipynb
 
 
 # Windows image file caches
