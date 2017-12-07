@@ -1,0 +1,169 @@
+COMMENT
+Set merchantability limits for cubic and boardfoot volume calculations
+END
+* Cubic volume merchantability: 8" minDBH to 6" minTOP
+Volume             0       All       8.0       6.0        1.        0.         6
+* Boardfoot volume merchantability: 8" minDBH to 6" minTOP
+BFVolume           0       All       8.0       6.0        1.        0.         6
+
+COMMENT
+Specify volume equations to use for certain species
+END
+* Use Flewelling's 2-Point Profile Model for all species available
+VOLEQNUM          RC          F03FW2W242
+VOLEQNUM          DF          F03FW2W202
+VOLEQNUM          SS          F03FW2W263
+VOLEQNUM          WH          F03FW2W263
+
+COMMENT
+Modify boardfoot volume estimates to match SuperAce volumes. Applies
+log-linear adjustment formula.
+END
+BFFDLN            BM -0.785593  0.883595
+BFFDLN            CH  0.882723  0.648068
+BFFDLN            CW -0.616031   1.01031
+BFFDLN            DF -0.679728   1.05459
+BFFDLN            GF   -1.7053   1.14941
+BFFDLN            RA -0.381967  0.926498
+BFFDLN            RC -0.957377   1.04739
+BFFDLN            SF  -2.12911   1.20275
+BFFDLN            SS -0.808302  0.984789
+BFFDLN            WH -0.996667   1.08199
+BFFDLN            WI   1.40251  0.515931
+
+
+COMMENT
+Harvest Revenue (HrvRvn) Keywords (ECON Extension) for several log sorts.
+References:
+--Values drawn from Washington DNR log price reports.
+https://www.dnr.wa.gov/publications/psl_ts_oct17_logprices.pdf
+--Log sort specifications (minTOP diameter) drawn from Northwest Log Rules
+Eastside and Westside Log Scaling Handbook (Jan. 1, 2011 edition)
+END
+
+* turn on ECON extension
+ECON
+* All spp. Pulp: $45/CCF of harvested logs - 2" minTOP up to 5" TOP
+HrvRvn            45         5        2.       All    &
+*   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* All spp. Pulp: $0/CCF of harvested logs - >6" minTOP
+HrvRvn           0.0         5        6.       All    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* All spp. Pulp: $0/CCF of harvested logs - >5" minTOP
+HrvRvn           0.0         5        5.       All    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* DF #1 $683/MBF of harvested logs - 30" minTOP
+HrvRvn           683         4       30.        DF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* DF #2 $683/MBF of harvested logs - 12" minTOP
+HrvRvn           683         4        12        DF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* DF #3 $714/MBF of harvested logs - 6" minTOP
+HrvRvn           714         4         6        DF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* DF #4/Chip-N-Saw $622/MBF of harvested logs - 5" minTOP
+HrvRvn           622         4         5        DF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* SS #1 $411/MBF of harvested logs - 24" minTOP
+HrvRvn           411         4        24        SS    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* SS #2 $411/MBF of harvested logs - 12" minTOP
+HrvRvn           411         4        12        SS    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* SS #3 $411/MBF of harvested logs - 6" minTOP
+HrvRvn           411         4         6        SS    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* SS #4/Chip-N-Saw $374/MBF of harvested logs - 5" minTOP
+HrvRvn           374         4         5        SS    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* White wood #1 $575/MBF of harvested logs - 24" minTOP
+HrvRvn           575         4        24        GF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           575         4        24        NF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           575         4        24        SF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           575         4        24        WH    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           575         4        24        YC    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* White wood #2 $575/MBF of harvested logs - 12" minTOP
+HrvRvn           575         4        12        GF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           575         4        12        NF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           575         4        12        SF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           575         4        12        WH    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           575         4        12        YC    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* White wood #3 $629/MBF of harvested logs - 6" minTOP
+HrvRvn           629         4         6        GF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           629         4         6        NF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           629         4         6        SF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           629         4         6        WH    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           629         4         6        YC    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* White wood #4/CNS $502/MBF of harvested logs - 5" minTOP
+HrvRvn           502         4         5        GF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           502         4         5        NF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           502         4         5        SF    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           502         4         5        WH    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+HrvRvn           502         4         5        YC    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* RC camprun $1,100/MBF of harvested logs - 7" minTOP
+HrvRvn          1100         4         7        RC    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* RA #2 $872/MBF of harvested logs - 12" minTOP
+HrvRvn           872         4        12        RA    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* RA #3 $800/MBF of harvested logs - 10" minTOP
+HrvRvn           800         4        10        RA    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* RA #4 $706/MBF of harvested logs - 6" minTOP
+HrvRvn           706         4         6        RA    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* RA #4 $706/MBF of harvested logs - 5" minTOP
+HrvRvn           706         4         5        RA    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* BM #2 $475/MBF of harvested logs - 12" minTOP
+HrvRvn           475         4        12        BM    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* BM #3 $425/MBF of harvested logs - 10" minTOP
+HrvRvn           425         4        10        BM    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* BM #4 $350/MBF of harvested logs - 6" minTOP
+HrvRvn           350         4         6        BM    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* BM #4 $350/MBF of harvested logs - 5" minTOP
+HrvRvn           350         4         5        BM    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* CW Util $135/MBF of harvested logs - 6" minTOP
+HrvRvn           135         4         6        CW    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* CW Util $135/MBF of harvested logs - 5" minTOP
+HrvRvn           135         4         5        CW    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* WI Util $267/MBF of harvested logs - 6" minTOP
+HrvRvn           135         4         6        WI    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* WI Util $267/MBF of harvested logs - 5" minTOP
+HrvRvn           135         4         5        WI    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* CH Util $267/MBF of harvested logs - 6" minTOP
+HrvRvn           135         4         6        CH    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+* CH Util $267/MBF of harvested logs - 5" minTOP
+HrvRvn           135         4         5        CH    &
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.
+END
+* END of ECON extension keywords
